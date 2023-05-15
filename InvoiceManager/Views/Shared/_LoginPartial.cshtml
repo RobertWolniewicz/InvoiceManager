@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "ms-auto" }))
     {
     @Html.AntiForgeryToken()
 
@@ -9,7 +9,7 @@
         <li class="nav-item active">
             @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new {@class = "nav-link", title = "Manage" })
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        <li class="nav-item active"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
     </ul>
     }
 }
