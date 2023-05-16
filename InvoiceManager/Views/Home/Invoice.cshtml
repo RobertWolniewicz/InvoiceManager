@@ -29,10 +29,9 @@
                     Pola tytuł, klient, sposób płatności i termin są
                     <strong>wymagane</strong>
                 </p>
+            }
 
                 @Html.HiddenFor(x => x.Invoice.Id)
-                @Html.HiddenFor(x => x.Invoice.UserId)
-                @Html.HiddenFor(x => x.Invoice.CreatedDate)
 
                 <div class="mb-1">
                     @Html.LabelFor(x => x.Invoice.Title)
@@ -68,7 +67,9 @@
                 <div class="mb-1">
                     @Html.LabelFor(x => x.Invoice.PaymentDate)
                     @Html.TextBoxFor(x => x.Invoice.PaymentDate, "{0:dd-MM-yyyy}",
-                   new { @class = "form-control" })
+                   new { @class = "form-control",
+                       @id = "PaymentDate", 
+                       autocomplete = "off" })
                 </div>
 
                 <div class="mb-1">
@@ -80,7 +81,7 @@
                 <button class="btn btn-primary btn-lg mb-5" type="submit">
                     Zapisz
                 </button>
-            }
+            
         }
     </div>
     <div class="col-5 offset-lg-1">
@@ -99,6 +100,24 @@
         function generatePdfe() {
 
         }
+
+        function deleteInvoicePosition() {
+            if (!confirm("Czy napewno chcesz usunąc pozycję?"))
+                return;
+        }
+
+
+        $(document).ready(function () {
+
+            $('#PaymentDate').datepicker({
+                format: "dd-mm-yyyy",
+                language: "pl",
+                multidate: false,
+                autoclose: true,
+                todayHighlight: true,
+                forceParse: false
+            })
+        });
     </script>
 }
 
