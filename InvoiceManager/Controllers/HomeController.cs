@@ -70,7 +70,7 @@ namespace InvoiceManager.Controllers
                 _invoiceRepository.Add(invoice);
 
             else
-                _invoiceRepository.Edit(invoice);
+                _invoiceRepository.Update(invoice);
 
             return RedirectToAction("Index");
         }
@@ -141,16 +141,12 @@ namespace InvoiceManager.Controllers
         [AllowAnonymous]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         [AllowAnonymous]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
         public ActionResult Invoice(int id = 0)

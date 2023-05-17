@@ -10,12 +10,18 @@ namespace InvoiceManager.Models.Repositorys
     {
         public List<Product> GetProducts()
         {
-            throw new NotImplementedException();
+            using (var context = new ApplicationDbContext())
+            {
+                return context.Products.ToList();
+            }
         }
 
         public Product GetProduct(int productId)
         {
-            throw new NotImplementedException();
+            using (var context = new ApplicationDbContext())
+            {
+                return context.Products.Single(p => p.Id == productId);
+            }
         }
     }
 }

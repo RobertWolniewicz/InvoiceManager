@@ -178,6 +178,10 @@
     <Compile Include="Migrations\202305160849574_LanguageCorrection.designer.cs">
       <DependentUpon>202305160849574_LanguageCorrection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305170916329_test.cs" />
+    <Compile Include="Migrations\202305170916329_test.designer.cs">
+      <DependentUpon>202305170916329_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Domains\Address.cs" />
     <Compile Include="Models\Domains\Client.cs" />
@@ -359,7 +363,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -419,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202305160849574_LanguageCorrection.resx">
       <DependentUpon>202305160849574_LanguageCorrection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305170916329_test.resx">
+      <DependentUpon>202305170916329_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

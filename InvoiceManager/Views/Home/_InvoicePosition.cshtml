@@ -35,7 +35,7 @@
                 <tr>@position.Value</tr>
                 <tr>
                     <button class="btn btn-danger btn-sm"
-                            onclick="deleteInvoicePosition()">
+                            onclick="deleteInvoicePosition(@position.Id, @position.InvoiceId, this)">
                         Usuń
                     </button>
                 </tr>
