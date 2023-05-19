@@ -13,11 +13,14 @@ namespace InvoiceManager.Models.Domains
         }
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Pole Nazwa jest wymagane.")]
+        [Display(Name = "Nazwa")]
         public string Name { get; set; }
-        public Address AddressId { get; set; }
 
-        [Required]
+        public int AddressId { get; set; }
+
+        [Required(ErrorMessage = "Pole Email jest wymagane.")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]

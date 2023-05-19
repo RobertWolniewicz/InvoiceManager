@@ -169,7 +169,7 @@ namespace InvoiceManager.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Invoices", "Invoice");
                 }
                 AddErrors(result);
             }
@@ -398,7 +398,7 @@ namespace InvoiceManager.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Invoices", "Invoice");
         }
 
         //
@@ -455,7 +455,7 @@ namespace InvoiceManager.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Invoices", "Invoice");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

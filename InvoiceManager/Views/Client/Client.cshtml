@@ -1,0 +1,63 @@
+﻿@model InvoiceManager.Models.ViewModels.EditClientViewModel
+
+
+<h1 class="mb-3">@Model.Heading</h1>
+
+
+<div class="row">
+    <div class="col-lg-6">
+        @using (Html.BeginForm("Client", "Client"))
+        {
+            if (Model.Client.Id == 0)
+            {
+                <p class="alert alert-info mt-4 mb-4">
+                    Pola Nazwa i Email są
+                    <strong>wymagane</strong>
+                </p>
+            }
+
+            @Html.HiddenFor(x => x.Client.Id)
+            @Html.HiddenFor(x => x.Client.UserId)
+
+            <div class="mb-1">
+                @Html.LabelFor(x => x.Client.Name)
+                @Html.TextBoxFor(x => x.Client.Name,
+               new { @class = "form-control", autofocus = "autofocus" })
+            </div>
+
+            <div class="mb-1">
+                @Html.LabelFor(x => x.Client.Email)
+                @Html.TextBoxFor(x => x.Client.Email,
+               new { @class = "form-control", autofocus = "autofocus" })
+            </div>
+
+            <div class="mb-1">
+                @Html.LabelFor(x => x.Client.Address.City)
+                @Html.TextBoxFor(x => x.Client.Address.City,
+               new { @class = "form-control", autofocus = "autofocus" })
+            </div>
+
+            <div class="mb-1">
+                @Html.LabelFor(x => x.Client.Address.Street)
+                @Html.TextBoxFor(x => x.Client.Address.Street,
+               new { @class = "form-control", autofocus = "autofocus" })
+            </div>
+
+            <div class="mb-1">
+                @Html.LabelFor(x => x.Client.Address.Number)
+                @Html.TextBoxFor(x => x.Client.Address.Number,
+               new { @class = "form-control", autofocus = "autofocus" })
+            </div>
+
+            <div class="mb-1">
+                @Html.LabelFor(x => x.Client.Address.PostalCode)
+                @Html.TextBoxFor(x => x.Client.Address.PostalCode,
+               new { @class = "form-control", autofocus = "autofocus" })
+            </div>
+
+            <button class="btn btn-primary btn-lg mb-5 mt-5" type="submit">
+                Zapisz
+            </button>
+        }
+    </div>
+</div>

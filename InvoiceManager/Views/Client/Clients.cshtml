@@ -1,0 +1,80 @@
+﻿@model IEnumerable <InvoiceManager.Models.Domains.Client>
+
+<h1 class="mb-3">Klienci</h1>
+
+<button class="btn btn-primary mb-3"
+        onclick='window.location.href = "@Url.Action("Client","Client")"'>
+    Dodaj
+</button>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-hover table-striped mt-3 mb-5">
+        <thead>
+            <tr>
+                <th scope="col">Nazwa</th>
+                <th scope="col">Email</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var client in Model)
+            {
+                <tr>
+                    <td>
+                        <a class="fw-bold"
+                           href="@Url.Action("Client","Client",
+                                new {id = client.Id})">
+                            @client.Name
+                        </a>
+                    </td>
+                    <td>@client.Email</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm"
+                                onclick="deleteClient('@client.Id', this)">
+                            Usuń
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div>
+        Brak klientów do wyświetlenia
+    </div>
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        function deleteClient(id, btn) {
+            if (!confirm("Czy napewno chcesz usunąć klienta?"))
+                return;
+
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("DeleteClient", "Client")",
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    if (data.Success) {
+                        var row = btn.parentNode.parentNode;
+                        row.parentNode.removeChild(row);
+                    } else {
+                        alert(data.Message);
+                    }
+                },
+                error: function (data) {
+                    alert(data.Message);
+                },
+                dataType: 'json'
+            });
+        }
+    </script>
+}
+
+

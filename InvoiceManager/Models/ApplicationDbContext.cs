@@ -38,6 +38,12 @@ namespace InvoiceManager.Models
                 .HasForeignKey(c => c.UserId)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(au => au.Products)
+                .WithRequired(p => p.User)
+                .HasForeignKey(p => p.UserId)
+                .WillCascadeOnDelete(false);
+
             base.OnModelCreating(modelBuilder);
         }
     }

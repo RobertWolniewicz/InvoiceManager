@@ -16,12 +16,14 @@ namespace InvoiceManager.Models
         {
             Invoices = new Collection<Invoice>();
             Clients = new Collection<Client>();
+            Products = new Collection<Product>();
         }
 
         public string Name { get; set; }
         public int AddressId { get; set; }
 
         public Address Address { get; set; }
+        public ICollection<Product> Products { get; set; }
         public ICollection<Invoice> Invoices { get; set; }
         public ICollection<Client> Clients { get; set; }
 

@@ -11,15 +11,24 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
-
         <div class="container">
-            <a class="navbar-brand" href="@Url.Action("Index","Home")">Strona główna</a>
+            <a class="navbar-brand" href="@Url.Action("Invoices", "Invoice")">Faktury</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Pozycje
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="@Url.Action("Clients", "Client")">Klienci</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Products", "Product")">Produkty</a></li>
+
+                        </ul>
+                    </li>
                     <li class="nav-item active">
                         @Html.ActionLink("O mnie", "About", "Home", null, new { @class = "nav-link" })
                     </li>
@@ -41,6 +50,7 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

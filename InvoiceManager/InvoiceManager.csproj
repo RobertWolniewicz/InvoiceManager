@@ -82,6 +82,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -165,22 +168,22 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PrintController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202305081957413_init.cs" />
-    <Compile Include="Migrations\202305081957413_init.designer.cs">
-      <DependentUpon>202305081957413_init.cs</DependentUpon>
+    <Compile Include="Migrations\202305190920317_init.cs" />
+    <Compile Include="Migrations\202305190920317_init.designer.cs">
+      <DependentUpon>202305190920317_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202305160849574_LanguageCorrection.cs" />
-    <Compile Include="Migrations\202305160849574_LanguageCorrection.designer.cs">
-      <DependentUpon>202305160849574_LanguageCorrection.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202305170916329_test.cs" />
-    <Compile Include="Migrations\202305170916329_test.designer.cs">
-      <DependentUpon>202305170916329_test.cs</DependentUpon>
+    <Compile Include="Migrations\202305191918150_ProductEntityModify.cs" />
+    <Compile Include="Migrations\202305191918150_ProductEntityModify.designer.cs">
+      <DependentUpon>202305191918150_ProductEntityModify.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Domains\Address.cs" />
@@ -195,8 +198,10 @@
     <Compile Include="Models\ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\Domains\ApplicationUser.cs" />
     <Compile Include="Models\ViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="Models\ViewModels\EditClientViewModel.cs" />
     <Compile Include="Models\ViewModels\EditInvoicePositionViewModel.cs" />
     <Compile Include="Models\ViewModels\EditInvoiceViewModel.cs" />
+    <Compile Include="Models\ViewModels\EditProductViewModel.cs" />
     <Compile Include="Models\ViewModels\FactorViewModel.cs" />
     <Compile Include="Models\ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="Models\ViewModels\ExternalLoginConfirmationViewModel.cs" />
@@ -241,9 +246,15 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\PrintInvoice.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -256,6 +267,7 @@
     <Content Include="Content\bootstrap-datepicker3.css.map" />
     <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker.css.map" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-3.6.4.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.4.js" />
     <Content Include="Scripts\jquery-3.6.4.min.js" />
@@ -362,7 +374,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Invoice\Invoices.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -382,9 +394,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Invoice.cshtml" />
-    <Content Include="Views\Home\_InvoicePosition.cshtml" />
-    <Content Include="Views\Home\InvoicePosition.cshtml" />
+    <Content Include="Views\Invoice\Invoice.cshtml" />
+    <Content Include="Views\Invoice\_InvoicePosition.cshtml" />
+    <Content Include="Views\Invoice\InvoicePosition.cshtml" />
+    <Content Include="Views\Client\Client.cshtml" />
+    <Content Include="Views\Client\Clients.cshtml" />
+    <Content Include="Views\Product\Products.cshtml" />
+    <Content Include="Views\Product\Product.cshtml" />
+    <Content Include="Views\Print\InvoiceTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -417,14 +434,11 @@
     <Content Include="Scripts\jquery-3.6.4.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202305081957413_init.resx">
-      <DependentUpon>202305081957413_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202305190920317_init.resx">
+      <DependentUpon>202305190920317_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202305160849574_LanguageCorrection.resx">
-      <DependentUpon>202305160849574_LanguageCorrection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202305170916329_test.resx">
-      <DependentUpon>202305170916329_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202305191918150_ProductEntityModify.resx">
+      <DependentUpon>202305191918150_ProductEntityModify.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

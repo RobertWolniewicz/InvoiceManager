@@ -1,0 +1,54 @@
+﻿@model IEnumerable<InvoiceManager.Models.Domains.InvoicePosition>
+
+
+<div class="row">
+    <h2>Pozycje faktury</h2>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-hover table-striped mt-3 mb-5">
+            <thead>
+                <tr>
+                    <th scope="col">Lp</th>
+                    <th scope="col">Produkt</th>
+                    <th scope="col">Ilośc</th>
+                    <th scope="col">Wartośc</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var position in Model)
+                {
+                    <tr>
+                        <td>
+                            <a class="fw-bold"
+                               href="@Url.Action("InvoicePosition", "Invoice",
+                           new
+                           {
+                           invoiceId = position.InvoiceId,
+                           invoicePositionId = position.Id
+                           })">
+                                @position.Lp
+                            </a>
+                        </td>
+                        <td>@position.Product.Name</td>
+                        <td>@position.Quantity</td>
+                        <td>@position.Value</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm"
+                                    onclick="deleteInvoicePosition(@position.Id, @position.InvoiceId, this)">
+                                Usuń
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div>
+            Brak pozycji do wyświetlenia
+        </div>
+    }
+</div>
