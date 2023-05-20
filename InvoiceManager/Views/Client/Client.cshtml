@@ -8,6 +8,8 @@
     <div class="col-lg-6">
         @using (Html.BeginForm("Client", "Client"))
         {
+            @Html.AntiForgeryToken()
+
             if (Model.Client.Id == 0)
             {
                 <p class="alert alert-info mt-4 mb-4">

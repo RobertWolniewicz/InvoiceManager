@@ -28,3 +28,17 @@
 .dropdown-menu {
     color: #ffffff8C;
 }
+.privacyPoliceInfo{
+    font-size: 10px;
+    position: fixed;
+    bottom: 0;
+    background-color: #464646;
+    width: 100%;
+    color: lightgray;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.privacyPoliceBtn{
+    font-size: 11px;
+}

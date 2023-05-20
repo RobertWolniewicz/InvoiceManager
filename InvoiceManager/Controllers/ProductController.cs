@@ -53,6 +53,7 @@ namespace InvoiceManager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Product(Product product)
         {
             var userId = User.Identity.GetUserId();
