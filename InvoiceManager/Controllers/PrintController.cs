@@ -50,5 +50,13 @@ namespace InvoiceManager.Controllers
             var data = TempData[fileGuid] as byte[];
             return File(data, "application/pdf", fileName);
         }
+
+        public ActionResult GetInvoiceFile(int id)
+        {
+            var userId = User.Identity.GetUserId();
+            var invoice = _invoiceRepository.GetInvoice(id, userId);
+
+            return View("InvoiceTemplate", invoice);
+        }
     }
 }

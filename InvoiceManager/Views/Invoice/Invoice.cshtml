@@ -14,6 +14,10 @@
     <button class="btn btn-secondary mb-3" onclick="generatePdf()">
         Generuj PDF
     </button>
+
+    <button class="btn btn-secondary mb-3" onclick="printInvoice()">
+        Wydrukuj
+    </button>
 }
 
 <div class="row">
@@ -122,6 +126,21 @@
                 dataType: 'json',
                 cache: false
             });
+
+        }
+
+        function printInvoice() {
+
+            var invoice = '@Url.Action("GetInvoiceFile", "Print")' + '?id=' + '@Model.Invoice.Id';
+
+            var printWindow = window.open(invoice);
+
+            printWindow.onload = function () {
+                printWindow.print();
+                printWindow.onafterprint = function () {
+                    printWindow.close();
+                }
+            };
 
         }
 
