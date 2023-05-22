@@ -13,7 +13,7 @@
             if (Model.Client.Id == 0)
             {
                 <p class="alert alert-info mt-4 mb-4">
-                    Pola Nazwa i Email są
+                    Pola Nazwa, Email i dane addresowe są
                     <strong>wymagane</strong>
                 </p>
             }
@@ -25,36 +25,42 @@
                 @Html.LabelFor(x => x.Client.Name)
                 @Html.TextBoxFor(x => x.Client.Name,
                new { @class = "form-control", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(x => x.Client.Name)
             </div>
 
             <div class="mb-1">
                 @Html.LabelFor(x => x.Client.Email)
                 @Html.TextBoxFor(x => x.Client.Email,
                new { @class = "form-control", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(x => x.Client.Email)
             </div>
 
             <div class="mb-1">
                 @Html.LabelFor(x => x.Client.Address.City)
                 @Html.TextBoxFor(x => x.Client.Address.City,
                new { @class = "form-control", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(x => x.Client.Address.City)
             </div>
 
             <div class="mb-1">
                 @Html.LabelFor(x => x.Client.Address.Street)
                 @Html.TextBoxFor(x => x.Client.Address.Street,
                new { @class = "form-control", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(x => x.Client.Address.Street)
             </div>
 
             <div class="mb-1">
                 @Html.LabelFor(x => x.Client.Address.Number)
                 @Html.TextBoxFor(x => x.Client.Address.Number,
                new { @class = "form-control", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(x => x.Client.Address.Number)
             </div>
 
             <div class="mb-1">
                 @Html.LabelFor(x => x.Client.Address.PostalCode)
                 @Html.TextBoxFor(x => x.Client.Address.PostalCode,
                new { @class = "form-control", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(x => x.Client.Address.PostalCode)
             </div>
 
             <button class="btn btn-primary btn-lg mb-5 mt-5" type="submit">

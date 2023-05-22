@@ -15,10 +15,20 @@
 
         protected override void Seed(InvoiceManager.Models.ApplicationDbContext context)
         {
-            var paymentByCach = new MethodOfPayment { Name = "Gotówka" };
-            var paymentByTransfer = new MethodOfPayment { Name = "Przelew" };
+            var paymentByCach = new MethodOfPayment { Id = 1, Name = "Gotówka" };
+            var paymentByTransfer = new MethodOfPayment { Id = 2, Name = "Przelew" };
+            var emailConfig = new EmailConfig 
+            { 
+                Id = 1, 
+                HostSmtp = "smtp.gmail.com", 
+                Port = 587, EnableSsl = true, 
+                SenderEmail = "reportservicessender@gmail.com", 
+                SenderEmailPassword = "tajnehasło",
+                ContactEmail = "robert_wol@wp.pl"
+            };
 
-                context.MethodOfPayments.AddOrUpdate(paymentByCach, paymentByTransfer);           
+                context.MethodOfPayments.AddOrUpdate(paymentByCach, paymentByTransfer);
+            context.EmailConfigs.AddOrUpdate(emailConfig);
           
         }
     }

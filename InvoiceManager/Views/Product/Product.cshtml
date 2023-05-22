@@ -25,12 +25,14 @@
                 @Html.LabelFor(x => x.Product.Name)
                 @Html.TextBoxFor(x => x.Product.Name,
                new { @class = "form-control", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(x => x.Product.Name)
             </div>
 
             <div class="mb-1">
                 @Html.LabelFor(x => x.Product.Value)
                 @Html.TextBoxFor(x => x.Product.Value,
                new { @class = "form-control", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(x => x.Product.Value)
             </div>
 
             <button class="btn btn-primary btn-lg mb-5 mt-5" type="submit">

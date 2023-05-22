@@ -18,6 +18,7 @@ namespace InvoiceManager.Models
         public DbSet<InvoicePosition> InvoicePositions { get; set; }
         public DbSet<MethodOfPayment> MethodOfPayments { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<EmailConfig> EmailConfigs { get; set; }
 
         public static ApplicationDbContext Create()
         {

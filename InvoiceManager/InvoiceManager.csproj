@@ -192,14 +192,20 @@
     <Compile Include="Migrations\202305191918150_ProductEntityModify.designer.cs">
       <DependentUpon>202305191918150_ProductEntityModify.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305211749242_EmailSenderFirtsPart.cs" />
+    <Compile Include="Migrations\202305211749242_EmailSenderFirtsPart.designer.cs">
+      <DependentUpon>202305211749242_EmailSenderFirtsPart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Domains\Address.cs" />
     <Compile Include="Models\Domains\Client.cs" />
+    <Compile Include="Models\Domains\EmailConfig.cs" />
     <Compile Include="Models\Domains\Invoice.cs" />
     <Compile Include="Models\Domains\InvoicePosition.cs" />
     <Compile Include="Models\Domains\MethodOfPayment.cs" />
     <Compile Include="Models\Domains\Product.cs" />
     <Compile Include="Models\Repositorys\ClientRepository.cs" />
+    <Compile Include="Models\Repositorys\EmailRepository.cs" />
     <Compile Include="Models\Repositorys\InvoiceRepository.cs" />
     <Compile Include="Models\Repositorys\ProductRepository.cs" />
     <Compile Include="Models\ViewModels\AddPhoneNumberViewModel.cs" />
@@ -209,6 +215,7 @@
     <Compile Include="Models\ViewModels\EditInvoicePositionViewModel.cs" />
     <Compile Include="Models\ViewModels\EditInvoiceViewModel.cs" />
     <Compile Include="Models\ViewModels\EditProductViewModel.cs" />
+    <Compile Include="Models\ViewModels\EmailContactViewModel.cs" />
     <Compile Include="Models\ViewModels\FactorViewModel.cs" />
     <Compile Include="Models\ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="Models\ViewModels\ExternalLoginConfirmationViewModel.cs" />
@@ -420,6 +427,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\SendMailer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -455,6 +463,15 @@
     <EmbeddedResource Include="Migrations\202305191918150_ProductEntityModify.resx">
       <DependentUpon>202305191918150_ProductEntityModify.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305211749242_EmailSenderFirtsPart.resx">
+      <DependentUpon>202305211749242_EmailSenderFirtsPart.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ReportService\EmailSender\EmailSender.csproj">
+      <Project>{98fd8c30-81a1-4221-afa5-df2e7a155f37}</Project>
+      <Name>EmailSender</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

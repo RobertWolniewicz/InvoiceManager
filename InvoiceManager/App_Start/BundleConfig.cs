@@ -10,6 +10,7 @@ namespace InvoiceManager
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery.cookie.js",
+                        "~/Scripts/jquery-{version}.min.js",
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
